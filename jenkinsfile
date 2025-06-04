@@ -14,10 +14,11 @@ stage('Build Docker Image') {
 }
 
 
-        stage('Run Container') {
-            steps {
-                sh 'docker run -d -p 3000:3000 saniyakhan8/devops-exam-app:latest'
-            }
-        }
+       stage('Run Container') {
+    steps {
+        sh 'docker run -d -p 9090:9090 devops-exam-app'
+    }
+}
+
     }
 }
