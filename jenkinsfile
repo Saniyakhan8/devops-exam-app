@@ -7,14 +7,12 @@ pipeline {
                git branch: 'main', url: 'https://github.com/Saniyakhan8/devops-exam-app.git'
             }
         }
+stage('Build Docker Image') {
+    steps {
+        sh 'docker build -t devops-exam-app .'
+    }
+}
 
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build('saniyakhan8/devops-exam-app:latest')
-                }
-            }
-        }
 
         stage('Run Container') {
             steps {
