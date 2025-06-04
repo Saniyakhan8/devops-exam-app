@@ -1,0 +1,22 @@
+echo "pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Saniyakhan8/devops-exam-app.git'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build('Saniyakhan8/devops-exam-app:latest')
+                }
+            }
+        }
+        stage('Run Container') {
+            steps {
+                sh 'docker run -d -p 3000:3000 Saniyakhan8/devops-exam-app:latest'
+            }
+        }
+    }
+}" > Jenkinsfile
